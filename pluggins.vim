@@ -4,34 +4,26 @@
   Plug 'tpope/vim-commentary'
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'easymotion/vim-easymotion'
+
+  " Fuzy finder
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  Plug 'reasonml-editor/vim-reason-plus'
-  Plug 'luochen1990/rainbow'
+
+  Plug 'luochen1990/rainbow' " -> Bracket colors
   Plug 'kassio/neoterm'
-  Plug 'tpope/vim-fugitive'
-  Plug 'chrisbra/Colorizer'
+  Plug 'tpope/vim-fugitive' " -> git
+  Plug 'chrisbra/Colorizer' " -> hex colors
   Plug 'jparise/vim-graphql'
-  Plug 'amiralies/vim-rescript'
   Plug 'bronson/vim-visual-star-search'
-  Plug 'github/copilot.vim'
   "
   " color schemes
   Plug 'gruvbox-community/gruvbox'
   Plug 'sts10/vim-pink-moon'
   Plug 'cormacrelf/vim-colors-github'
 
-	" for neovim
-	if has('nvim')
-		Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	" for vim 8 with python
-	else
-	  Plug 'Shougo/deoplete.nvim'
-	  Plug 'roxma/nvim-yarp'
-	  Plug 'roxma/vim-hug-neovim-rpc'
-	  " the path to python3 is obtained through executing `:echo exepath('python3')` in vim
-	  let g:python3_host_prog = "/usr/local/bin/python3"
-	endif
+  " Language server
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'github/copilot.vim' " -> AI autocomplete
 
   Plug  'Yggdroot/indentLine'
 call plug#end()
@@ -49,4 +41,9 @@ let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowTo
 
 let g:WorkspaceFolders = [
  \ '/Users/arnar/dev/island.is/apps/judicial-system/web',
+ \ '/Users/arnar/dev/island.is/apps/judicial-system/backend',
+ \ '/Users/arnar/dev/island.is/apps/judicial-system/api',
+ \ '/Users/arnar/dev/island.is/apps/judicial-system/web-e2e',
+ \ '/Users/arnar/dev/island.is/libs/judicial-system/consts',
+ \ '/Users/arnar/dev/island.is/libs/judicial-system/types',
  \ ]

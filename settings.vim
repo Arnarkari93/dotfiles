@@ -22,18 +22,12 @@ function! SetTheme()
 endfunction
 
 
-set autoindent
-set autoread
 set backspace=eol,start,indent
 set conceallevel=0
 set cursorline
 set clipboard=unnamed
-set encoding=utf-8
 set expandtab
 set fileencoding=utf-8
-set hidden
-set history=10000
-set hlsearch
 set ignorecase
 set lazyredraw
 set lcs=trail:·,tab:»·
@@ -57,10 +51,8 @@ set tabstop=2
 set termguicolors
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 set wildignore+=*/node_modules/*
-set wildmenu
 set wrap
 
-set nocompatible
 filetype plugin on
 
 " This was causing problems
@@ -105,13 +97,12 @@ let g:neoterm_default_mod='vertical'
 let g:neoterm_autoscroll=1
 let g:neoterm_autoinsert=1
 
-let g:indentLine_setConceal = 0
-" default ''.
-" n for Normal mode
-" v for Visual mode
-" i for Insert mode
-" c for Command line editing, for 'incsearch'
-let g:indentLine_concealcursor = ""
+" Line indent display
+let g:indentLine_setConceal = 1
+let g:indentLine_concealcursor = "inc"
+let g:indentLine_conceallevel = 2
+let g:indentLine_fileType = ['typescript', 'typescriptreact', 'javascript', 'json']
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " format on save
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
