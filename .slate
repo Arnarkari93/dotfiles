@@ -21,6 +21,8 @@ bind down:cmd;alt    focus behind
 alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias full-next move screenOriginX;screenOriginY screenSizeX;screenSizeY next
 
+alias center move screenOriginX+screenSizeX/6;screenOriginY+screenSizeY/6 screenSizeX/3+screenSizeX/3;screenSizeY/3+screenSizeY/3
+
 alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 alias lefthalf-next move screenOriginX;screenOriginY screenSizeX/2;screenSizeY next
 
@@ -50,6 +52,8 @@ alias bottommid9 move screenOriginX+screenSizeX/3;screenOriginY+2*screenSizeY/3 
 
 bind f:ctrl;alt	       ${full}
 bind f:ctrl;alt;shift ${full-next}
+
+bind c:ctrl;alt	  ${center}
 
 bind q:ctrl;alt		${leftthird}
 bind w:ctrl;alt		${midthird}
