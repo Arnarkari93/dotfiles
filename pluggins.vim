@@ -4,17 +4,18 @@
   Plug 'tpope/vim-commentary'
   Plug 'vim-scripts/ReplaceWithRegister'
   Plug 'easymotion/vim-easymotion'
-  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'reasonml-editor/vim-reason-plus'
   Plug 'luochen1990/rainbow'
-  Plug 'vim-airline/vim-airline'
   Plug 'kassio/neoterm'
   Plug 'tpope/vim-fugitive'
   Plug 'chrisbra/Colorizer'
   Plug 'jparise/vim-graphql'
   Plug 'amiralies/vim-rescript'
   Plug 'bronson/vim-visual-star-search'
+  Plug 'github/copilot.vim'
+  "
   " color schemes
   Plug 'gruvbox-community/gruvbox'
   Plug 'sts10/vim-pink-moon'
@@ -42,14 +43,10 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
-  \ 'coc-reason', 
   \ ]
 
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 let g:WorkspaceFolders = [
- \ '/Users/arnar/gangverk/ws-monorepo/src/mobile/projects/mobile-app',
- \ '/Users/arnar/gangverk/ws-monorepo/src/solum/bidclient',
- \ '/Users/arnar/gangverk/ws-monorepo/src/solum/dls',
- \ '/Users/arnar/gangverk/ws-monorepo/src/typescript',
+ \ '/Users/arnar/dev/island.is/apps/judicial-system/web',
  \ ]

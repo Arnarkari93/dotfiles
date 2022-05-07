@@ -1,6 +1,8 @@
 syntax on
 set background=dark
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let g:github_colors_block_diffmark = 0
+
 colorscheme gruvbox
 " colorscheme github
 " colorscheme pink-moon
@@ -24,6 +26,7 @@ set autoindent
 set autoread
 set backspace=eol,start,indent
 set conceallevel=0
+set cursorline
 set clipboard=unnamed
 set encoding=utf-8
 set expandtab
@@ -57,15 +60,19 @@ set wildignore+=*/node_modules/*
 set wildmenu
 set wrap
 
-
 set nocompatible
 filetype plugin on
-set laststatus=2
 
+" This was causing problems
 if $TERM_PROGRAM =~ "iTerm"
   let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
   let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif 
+
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
+augroup END
 
 " Some servers have issues with backup files, see #649
 set nobackup
@@ -109,3 +116,6 @@ let g:indentLine_concealcursor = ""
 " format on save
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 set rtp+=/usr/local/opt/fzf
+
+" copilot 
+let g:copilot_no_tab_map=1

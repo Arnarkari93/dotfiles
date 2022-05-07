@@ -6,6 +6,23 @@ map <Leader>vr :source ~/.vimrc<cr>
 map <Leader>e :Sexplore<cr>
 map <Leader>w <C-w><cr>
 
+" Behave vim Y
+nnoremap Y y$
+
+" Keep search results centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Moving text
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==
+inoremap <C-k> <esc>:m .-2<CR>==
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+
 " Remap keys for gotos
 nmap <silent> ,gg <Plug>(coc-definition)
 nmap <silent> ,gt <Plug>(coc-type-definition)
@@ -13,10 +30,12 @@ nmap <silent> ,gi <Plug>(coc-implementation)
 nmap <silent> ,gr <Plug>(coc-references)
 nmap <silent> ,gn <Plug>(coc-rename)
 nmap <silent> ,gf <Plug>(coc-fix-current)
+xmap <silent> ,a <Plug>(coc-codeaction-selected)
+nmap <silent> ,a <Plug>(coc-codeaction-selected)
 command! -nargs=0 Format :call CocAction('format')
 nmap <leader>fr :Format<CR>
 " Use K to show documentation in preview window
-nnoremap <silent> <leader>k :call <SID>show_documentation()<CR>
+nnoremap <silent> ,k :call <SID>show_documentation()<CR>
 nmap <silent> <leader>en <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>eN <Plug>(coc-diagnostic-prev)
 
@@ -40,9 +59,14 @@ nnoremap <leader><Tab> <C-w><C-w><CR>
 
 " fzf.vim
 nnoremap <silent> <leader>p :Files<CR>
+nnoremap <silent> <leader>fg :Files<CR>
 nnoremap <silent> <leader>gs :GFiles?<CR>
 nnoremap <silent> <leader>sb :Buffers<CR>
 nnoremap <silent> <leader>sl :BLines<CR>
+nnoremap <silent> <leader>m :History<CR>
+" disappering cursor
+autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
+
 command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
@@ -138,5 +162,10 @@ nnoremap <leader>wtt :tabnew<cr>
 
 " Git mappings
 nnoremap <leader>ga :Git add .<cr>
-nnoremap <leader>gc :Git commit<cr>
+nnoremap <leader>gc :Git commit -v<cr>
 nnoremap <leader>gp :Git pull<cr>
+
+" Copilot
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
