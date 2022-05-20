@@ -30,6 +30,7 @@ set expandtab
 set fileencoding=utf-8
 set ignorecase
 set lazyredraw
+set laststatus=3 " global statusline
 set lcs=trail:·,tab:»·
 set mouse=a
 set nolist
@@ -59,7 +60,7 @@ filetype plugin on
 if $TERM_PROGRAM =~ "iTerm"
   let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
   let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
-endif 
+endif
 
 augroup highlight_yank
     autocmd!
@@ -79,8 +80,8 @@ set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
-" always show signcolumns
-set signcolumn=yes
+" always show signcolumns space before line numbers
+set signcolumn=auto
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -104,9 +105,35 @@ let g:indentLine_conceallevel = 2
 let g:indentLine_fileType = ['typescript', 'typescriptreact', 'javascript', 'json']
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
+" vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='base16'
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'b': 20,
+    \ 'x': 60,
+    \ 'y': 5,
+    \ 'z': 5,
+    \ 'warning': 80,
+    \ 'error': 80,
+    \ }
+"  airline default sections
+"   let g:airline_section_a       (mode, crypt, paste, spell, iminsert)
+"  let g:airline_section_b       (hunks, branch)[*]
+"  let g:airline_section_c       (bufferline or filename, readonly)
+"  let g:airline_section_gutter  (csv)
+"  let g:airline_section_x       (tagbar, filetype, virtualenv)
+"  let g:airline_section_y       (fileencoding, fileformat, 'bom', 'eol')
+"  let g:airline_section_z       (percentage, line number, column number)
+"  let g:airline_section_error   (ycm_error_count, syntastic-err, eclim,
+"                                 languageclient_error_count)
+"  let g:airline_section_warning (ycm_warning_count, syntastic-warn,
+"                                 languageclient_warning_count, whitespace)
+
+
 " format on save
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 set rtp+=/usr/local/opt/fzf
 
-" copilot 
+" copilot
 let g:copilot_no_tab_map=1
+

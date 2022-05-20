@@ -3,29 +3,37 @@
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
   Plug 'vim-scripts/ReplaceWithRegister'
+  Plug 'bronson/vim-visual-star-search'
   Plug 'easymotion/vim-easymotion'
 
   " Fuzy finder
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 
+  " Nice look
   Plug 'luochen1990/rainbow' " -> Bracket colors
-  Plug 'kassio/neoterm'
-  Plug 'tpope/vim-fugitive' " -> git
   Plug 'chrisbra/Colorizer' " -> hex colors
-  Plug 'jparise/vim-graphql'
-  Plug 'bronson/vim-visual-star-search'
-  "
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug  'Yggdroot/indentLine'
   " color schemes
   Plug 'gruvbox-community/gruvbox'
   Plug 'sts10/vim-pink-moon'
   Plug 'cormacrelf/vim-colors-github'
 
-  " Language server
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'kassio/neoterm' " nvim terminal
+  Plug 'tpope/vim-fugitive' " -> git
+
+  Plug 'jparise/vim-graphql'
+
+  Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language server
+
+  Plug 'pangloss/vim-javascript' " syntax highlighting
+  Plug 'leafgarland/typescript-vim'
+  Plug 'maxmellon/vim-jsx-pretty'
+
   Plug 'github/copilot.vim' " -> AI autocomplete
 
-  Plug  'Yggdroot/indentLine'
 call plug#end()
 
 " COC.vim begin
