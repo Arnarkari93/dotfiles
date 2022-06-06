@@ -12,14 +12,17 @@ nkeymap('<leader>gs', '<cmd>lua require("telescope.builtin").git_status()<cr>')
 nkeymap('<leader>fw', '<cmd>lua require("telescope.builtin").grep_string()<cr>')
 
 local action_layout = require("telescope.actions.layout")
+local actions = require("telescope.actions")
 require('telescope').setup {
   defaults = {
     mappings = {
       n = {
-        ["<C-b>"] = action_layout.toggle_preview
+        ["<C-b>"] = action_layout.toggle_preview,
+        ["<C-s>"] = actions.send_selected_to_qflist + actions.open_qflist,
       },
       i = {
-        ["<C-p>"] = action_layout.toggle_preview
+        ["<C-p>"] = action_layout.toggle_preview,
+        ["<C-s>"] = actions.send_selected_to_qflist + actions.open_qflist,
       },
     }, },
   pickers = {

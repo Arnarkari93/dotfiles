@@ -1,6 +1,6 @@
 local configs = require'nvim-treesitter.configs'
 configs.setup {
-  ensure_installed = {"lua", "vim", "javascript", "typescript"},
+  ensure_installed = {"lua", "vim", "javascript", "typescript", "tsx"},
   highlight = { -- enable highlighting
     enable = true,
   },
