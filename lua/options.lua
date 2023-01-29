@@ -1,3 +1,7 @@
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local options = {
   termguicolors = true,                    -- set term gui colors (most terminals support this)
   backup = false,                          -- creates a backup file
@@ -46,3 +50,5 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+--
+

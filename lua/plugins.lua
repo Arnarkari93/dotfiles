@@ -58,11 +58,12 @@ return packer.startup(function(use)
   use "vim-scripts/ReplaceWithRegister"
   use "bronson/vim-visual-star-search"
 
-  use { "tpope/vim-fugitive", config('fugitive') } -- git
+  use { "tpope/vim-fugitive", config = config('fugitive') } -- git
 
   use { "github/copilot.vim", config = config("copilot") } -- AI autocomplete
 
   use { 'nvim-treesitter/nvim-treesitter', config = config('treesitter'), run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter-context' }
   use { 'williamboman/nvim-lsp-installer', config = config('lspconfig') }
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -70,6 +71,9 @@ return packer.startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use { 'hrsh7th/nvim-cmp', config = config('nvim_cmp') }
+  use({"L3MON4D3/LuaSnip", tag = "v1.*"})
+
+  use { 'windwp/nvim-autopairs', config = config('autopairs') }
 
   use { 'sbdchd/neoformat', config = config('prettier') }
   use {
@@ -85,6 +89,9 @@ return packer.startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
     config = config('lualine')
   }
+
+  use { 'nvim-tree/nvim-tree.lua', config = config('nvim_tree') }
+  use { 'norcalli/nvim-colorizer.lua' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

@@ -39,7 +39,6 @@ nkeymap("<leader>w=", "<C-w>=")
 nkeymap("<leader>e", ":Lex 30 %:h<cr>")
 nkeymap("<leader><Tab>", "<C-w><C-w>")
 
-
 keymap("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<cr>", opts)
 
 keymap("n", "<Tab>", ":bnext<CR>", opts)
@@ -54,11 +53,17 @@ keymap("n", "<leader>fee", ":vsplit $MYVIMRC<cr>", opts)
 -- Behave vim Y
 keymap("n", "Y", "y$", opts)
 
+-- Terminal
+keymap("t", "<Esc>", "<C-\\><C-n>", opts)
+
 -- search
 keymap("n", "n", "nzzzv", opts) -- keep search results centered
 keymap("n", "N", "Nzzzv", opts) -- keep search results centered
 keymap("n", "J", "mzJ`z", opts) -- keep search results centered
 keymap("n", "<leader>sn", ":noh<cr>", opts)
+
+keymap("n", "C-d", "C-dzz", opts)
+keymap("n", "C-u", "C-uzz", opts)
 
 -- VISUAL --
 -- Stay in indent mode

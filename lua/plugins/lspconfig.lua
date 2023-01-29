@@ -12,7 +12,7 @@ lsp_installer.on_server_ready(function(server)
       }
     }
   elseif server.name == "tsserver" then
-    opts = { }
+    opts = {}
   end
   server:setup(opts)
 end)
@@ -40,7 +40,5 @@ nkeymap('<leader>en', ':lua vim.diagnostic.goto_next()<cr>')
 nkeymap('<leader>eN', ':lua vim.diagnostic.goto_prev()<cr>')
 nkeymap('<leader>eN', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 nkeymap('<leader>en', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-nkeymap('<space>do', '<cmd>lua vim.diagnostic.open_float()<CR>')
-nkeymap('<space>ff', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-
-
+nkeymap('<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>')
+nkeymap('<leader>ff', '<cmd>lua vim.lsp.buf.format { async = true }<CR>')
