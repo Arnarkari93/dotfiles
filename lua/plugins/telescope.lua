@@ -8,6 +8,7 @@ local function nkeymap(key, map)
 end
 
 nkeymap('<leader>pf', '<cmd>lua require("telescope.builtin").find_files()<cr>')
+nkeymap('<leader>pg', '<cmd>lua require("telescope.builtin").git_files()<cr>')
 nkeymap('<leader>pw', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
 nkeymap('<leader>sb', '<cmd>lua require("telescope.builtin").buffers()<cr>')
 nkeymap('<leader>ph', '<cmd>lua require("telescope.builtin").help_tags()<cr>')
@@ -20,6 +21,12 @@ local action_layout = require("telescope.actions.layout")
 local actions = require("telescope.actions")
 
 require('telescope').setup {
+  layout_config = {
+    vertical = {
+      prompt_position = "bottom",
+      mirror = true,
+    },
+  },
   defaults = {
     mappings = {
       n = {
@@ -34,15 +41,16 @@ require('telescope').setup {
         ["<Right>"] = actions.cycle_history_next,
         ["<Left>"] = actions.cycle_history_prev,
       },
-    }, },
+    },
+  },
   pickers = {
   },
   extensions = {
     fzf = {
-      fuzzy = true, -- false will only do exact matching
+      fuzzy = true,                   -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true, -- override the file sorter
-      case_mode = "smart_case", -- or "ignore_case" or "respect_case" the default="smart_case"
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = "smart_case",       -- or "ignore_case" or "respect_case" the default="smart_case"
     },
     live_grep_args = {
       auto_quoting = true, -- enable/disable auto-quoting

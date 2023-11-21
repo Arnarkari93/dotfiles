@@ -65,6 +65,10 @@ keymap("n", "<leader>sn", ":noh<cr>", opts)
 keymap("n", "C-d", "C-dzz", opts)
 keymap("n", "C-u", "C-uzz", opts)
 
+-- search and replace
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+
 -- VISUAL --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)

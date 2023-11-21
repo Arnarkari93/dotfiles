@@ -1,21 +1,7 @@
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-  if server.name == "sumneko_lua" then
-    opts = {
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim', 'use' }
-          },
-        }
-      }
-    }
-  elseif server.name == "tsserver" then
-    opts = {}
-  end
-  server:setup(opts)
-end)
+require("mason").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = { "lua_ls", "tsserver", "rust_analyzer" },
+}
 
 -- local term_opts = { silent = true }
 

@@ -44,12 +44,13 @@ return packer.startup(function(use)
     return string.format("require('plugins.%s')", name)
   end
   -- My plugins here
-  use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "wbthomason/packer.nvim"    -- Have packer manage itself
+  use "nvim-lua/popup.nvim"       -- An implementation of the Popup API from vim in Neovim
+  use "nvim-lua/plenary.nvim"     -- Useful lua functions used ny lots of plugins
 
   use "gruvbox-community/gruvbox" -- colorsheme
   use "Shatur/neovim-ayu"
+  use 'folke/tokyonight.nvim'
 
   -- Should be a part of vim
   use "tpope/vim-surround"
@@ -58,20 +59,24 @@ return packer.startup(function(use)
   use "vim-scripts/ReplaceWithRegister"
   use "bronson/vim-visual-star-search"
 
+  use "christoomey/vim-tmux-navigator" -- navigate between vim and tmux panes
+
   use { "tpope/vim-fugitive", config = config('fugitive') } -- git
 
-  use { "github/copilot.vim", config = config("copilot") } -- AI autocomplete
+  use { "github/copilot.vim", config = config("copilot") }  -- AI autocomplete
 
   use { 'nvim-treesitter/nvim-treesitter', config = config('treesitter'), run = ':TSUpdate' }
   use { 'nvim-treesitter/nvim-treesitter-context' }
-  use { 'williamboman/nvim-lsp-installer', config = config('lspconfig') }
+
+  use 'williamboman/mason.nvim'
+  use { 'williamboman/mason-lspconfig.nvim', config = config('lspconfig') }
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use { 'hrsh7th/nvim-cmp', config = config('nvim_cmp') }
-  use({"L3MON4D3/LuaSnip", tag = "v1.*"})
+  use({ "L3MON4D3/LuaSnip", tag = "v1.*" })
 
   use { 'windwp/nvim-autopairs', config = config('autopairs') }
 

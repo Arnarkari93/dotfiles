@@ -11,4 +11,4 @@ local function nkeymap(key, map, customOpts)
   end
 end
 
-nkeymap('C-G', ':Git', opts)
+nkeymap('<c-g>', ':Git', opts)
