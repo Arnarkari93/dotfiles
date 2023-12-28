@@ -18,10 +18,27 @@ bind down:cmd;alt    focus behind
 # ======================================
 # Abstract positions
 # ======================================
+# screenOriginX = target screen's top left x coordinate (should not be used in Window Hints configs)
+# screenOriginY = target screen's top left y coordinate (should not be used in Window Hints configs)
+# screenSizeX = target screen's width
+# screenSizeY = target screen's height
+# windowTopLeftX = window's current top left x coordinate (should not be used in Window Hints configs)
+# windowTopLeftY = window's current top left y coordinate (should not be used in Window Hints configs)
+# windowSizeX = window's width
+# windowSizeY = window's height
+# newWindowSizeX = window's new width (after resize, only usable in topLeftX and topLeftY, should not be
+#                  used in configs)
+# newWindowSizeY = window's new height (after resize, only usable in topLeftX and topLeftY, should not be
+#                  used in configs)
+# windowHintsWidth = the value of the windowHintsWidth config (only usable in windowHintsTopLeftX and
+#                    windowHintsTopLeftY)
+# windowHintsHeight = the value of the windowHintsHeight config (only usable in windowHintsTopLeftX and
+#                     windowHintsTopLeftY)
+#
 alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias full-next move screenOriginX;screenOriginY screenSizeX;screenSizeY next
 
-alias center move screenOriginX+screenSizeX/6;screenOriginY+screenSizeY/6 screenSizeX/3+screenSizeX/3;screenSizeY/3+screenSizeY/3
+alias center move screenOriginX+screenSizeX/16;screenOriginY+screenSizeY/16 (screenSizeX/16)*14;(screenSizeY/16)*14
 
 alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 alias lefthalf-next move screenOriginX;screenOriginY screenSizeX/2;screenSizeY next
