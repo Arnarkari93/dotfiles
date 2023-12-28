@@ -59,7 +59,7 @@ return packer.startup(function(use)
   use "vim-scripts/ReplaceWithRegister"
   use "bronson/vim-visual-star-search"
 
-  use "christoomey/vim-tmux-navigator" -- navigate between vim and tmux panes
+  use "christoomey/vim-tmux-navigator"                  -- navigate between vim and tmux panes
 
   use { "tpope/vim-fugitive", config = config('fugitive') } -- git
 
@@ -97,6 +97,15 @@ return packer.startup(function(use)
 
   use { 'nvim-tree/nvim-tree.lua', config = config('nvim_tree') }
   use { 'norcalli/nvim-colorizer.lua' }
+  use({
+    "jackMort/ChatGPT.nvim",
+    config = config("chatgpt"),
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
