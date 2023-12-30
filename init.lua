@@ -1,6 +1,5 @@
-require "options"
-require "keymaps"
-require "plugins"
-require "colorscheme"
-require "autocmd"
-
+require("arnar.options")
+require("arnar.keymaps")
+require("arnar.lazy")
+require("arnar.colorscheme")
+require("arnar.autocmd")
