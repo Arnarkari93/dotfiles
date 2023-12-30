@@ -1,5 +1,4 @@
 require("arnar.options")
 require("arnar.keymaps")
 require("arnar.lazy")
-require("arnar.colorscheme")
 require("arnar.autocmd")

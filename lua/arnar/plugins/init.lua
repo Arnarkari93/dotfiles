@@ -5,10 +5,6 @@ return {
   "nvim-lua/popup.nvim",       -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim",     -- Useful lua functions used ny lots of plugins
 
-  "gruvbox-community/gruvbox", -- colorsheme
-  "Shatur/neovim-ayu",
-  'folke/tokyonight.nvim',
-
   -- Should be a part of vim
   "tpope/vim-surround",
   "tpope/vim-abolish",
