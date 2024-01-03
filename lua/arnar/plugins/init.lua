@@ -1,5 +1,4 @@
 return {
-  "folke/which-key.nvim",
   { "folke/neoconf.nvim",                       cmd = "Neoconf" },
   "folke/neodev.nvim",
   "nvim-lua/popup.nvim",       -- An implementation of the Popup API from vim in Neovim
