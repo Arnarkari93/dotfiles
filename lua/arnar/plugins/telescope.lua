@@ -37,8 +37,6 @@ return {
           i = {
             ["<C-p>"] = action_layout.toggle_preview,
             ["<C-s>"] = actions.send_selected_to_qflist + actions.open_qflist,
-            ["<Right>"] = actions.cycle_history_next,
-            ["<Left>"] = actions.cycle_history_prev,
           },
         },
       },
