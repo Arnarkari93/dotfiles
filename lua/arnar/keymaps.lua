@@ -35,8 +35,6 @@ end
 
 nkeymap("<leader>w", "<C-w>")
 nkeymap("<leader>wsh", ":sp<cr>")
-nkeymap("<leader>w=", "<C-w>=")
-nkeymap("<leader>e", ":Lex 30 %:h<cr>")
 nkeymap("<leader><Tab>", "<C-w><C-w>")
 
 keymap("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<cr>", opts)
