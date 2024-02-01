@@ -12,7 +12,6 @@ return {
   "bronson/vim-visual-star-search",
 
   "christoomey/vim-tmux-navigator", -- navigate between vim and tmux panes
-  'nvim-treesitter/nvim-treesitter-context',
   'williamboman/mason.nvim',
   'neovim/nvim-lspconfig',
   'hrsh7th/cmp-nvim-lsp',
