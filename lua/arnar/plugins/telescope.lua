@@ -6,15 +6,6 @@ return {
       vim.api.nvim_set_keymap('n', key, map, {})
     end
 
-    nkeymap('<leader>pf', '<cmd>lua require("telescope.builtin").find_files()<cr>')
-    nkeymap('<leader>pg', '<cmd>lua require("telescope.builtin").git_files()<cr>')
-    nkeymap('<leader>pw', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
-    nkeymap('<leader>sb', '<cmd>lua require("telescope.builtin").buffers()<cr>')
-    nkeymap('<leader>ph', '<cmd>lua require("telescope.builtin").help_tags()<cr>')
-    nkeymap('<leader>hi', '<cmd>lua require("telescope.builtin").oldfiles()<cr>')
-    nkeymap('<leader>ss', '<cmd>lua require("telescope.builtin").spell_suggest()<cr>')
-    nkeymap('<leader>gs', '<cmd>lua require("telescope.builtin").git_status()<cr>')
-    nkeymap('<leader>fw', '<cmd>lua require("telescope.builtin").grep_string()<cr>')
 
     local action_layout = require("telescope.actions.layout")
     local actions = require("telescope.actions")
@@ -60,5 +51,15 @@ return {
     require('telescope').load_extension('fzf')
     require("telescope").load_extension("live_grep_args")
     nkeymap('<leader>pr', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>')
+
+    nkeymap('<leader>pf', '<cmd>lua require("telescope.builtin").find_files()<cr>')
+    nkeymap('<leader>pg', '<cmd>lua require("telescope.builtin").git_files()<cr>')
+    nkeymap('<leader>pw', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
+    nkeymap('<leader>sb', '<cmd>lua require("telescope.builtin").buffers()<cr>')
+    nkeymap('<leader>ph', '<cmd>lua require("telescope.builtin").help_tags()<cr>')
+    nkeymap('<leader>hi', '<cmd>lua require("telescope.builtin").oldfiles()<cr>')
+    nkeymap('<leader>ss', '<cmd>lua require("telescope.builtin").spell_suggest()<cr>')
+    nkeymap('<leader>gs', '<cmd>lua require("telescope.builtin").git_status()<cr>')
+    nkeymap('<leader>fw', '<cmd>lua require("telescope.builtin").grep_string()<cr>')
   end,
 }

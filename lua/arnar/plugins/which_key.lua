@@ -23,7 +23,7 @@ return {
       f = {
         name = "File",
         f = { "<cmd>Telescope find_files<cr>", "File" },
-        w = { "<cmd>Telescope live_grep<cr>", "Word (grep word)" },
+        w = "Word (grep word)",
         s = "Save",
         b = { "<cmd>Telescope buffers<cr>", "Buffer" },
       },
