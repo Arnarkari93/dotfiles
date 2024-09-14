@@ -3,7 +3,7 @@ return {
   config = function()
     require("mason").setup()
     require("mason-lspconfig").setup {
-      ensure_installed = { "lua_ls", "tsserver", "rust_analyzer" },
+      ensure_installed = { "lua_ls", "tsserver", "rust_analyzer", "csharp_ls", "eslint" },
     }
 
     local opts = { noremap = true, silent = false }

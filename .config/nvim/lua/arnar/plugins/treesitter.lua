@@ -4,7 +4,9 @@ return {
   config = function()
     local configs = require 'nvim-treesitter.configs'
     configs.setup {
-      ensure_installed = { "lua", "vim", "javascript", "typescript", "tsx" },
+      ensure_installed = {
+        "lua", "vim", "javascript", "typescript", "tsx", "luadoc", "vimdoc", "markdown",
+      },
       highlight = { -- enable highlighting
         enable = true,
       },

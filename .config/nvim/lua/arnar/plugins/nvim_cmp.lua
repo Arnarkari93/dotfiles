@@ -93,5 +93,11 @@ return {
         },
       },
     }
+    require("lspconfig").csharp_ls.setup({
+      capabilities = capabilities
+    })
+    require("lspconfig").eslint.setup({
+      capabilities = capabilities
+    })
   end
 }

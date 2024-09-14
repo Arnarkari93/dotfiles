@@ -1,11 +1,10 @@
 return {
   'nvim-telescope/telescope.nvim',
-  dependencies = { { "nvim-telescope/telescope-live-grep-raw.nvim" } },
+  dependencies = { { "nvim-telescope/telescope-live-grep-args.nvim" } },
   config = function()
     local function nkeymap(key, map)
       vim.api.nvim_set_keymap('n', key, map, {})
     end
-
 
     local action_layout = require("telescope.actions.layout")
     local actions = require("telescope.actions")
@@ -18,6 +17,7 @@ return {
         },
       },
       defaults = {
+        path_display = { "filename_first" },
         mappings = {
           n = {
             ["<C-p>"] = action_layout.toggle_preview,
@@ -35,10 +35,10 @@ return {
       },
       extensions = {
         fzf = {
-          fuzzy = true,               -- false will only do exact matching
+          fuzzy = true,                   -- false will only do exact matching
           override_generic_sorter = true, -- override the generic sorter
-          override_file_sorter = true, -- override the file sorter
-          case_mode = "smart_case",   -- or "ignore_case" or "respect_case" the default="smart_case"
+          override_file_sorter = true,    -- override the file sorter
+          case_mode = "smart_case",       -- or "ignore_case" or "respect_case" the default="smart_case"
         },
         live_grep_args = {
           auto_quoting = true, -- enable/disable auto-quoting
@@ -53,8 +53,10 @@ return {
     nkeymap('<leader>pr', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>')
 
     nkeymap('<leader>pf', '<cmd>lua require("telescope.builtin").find_files()<cr>')
+    nkeymap('<leader>pF', '<cmd>lua require("telescope.builtin").find_files({ hidden=true })<cr>')
     nkeymap('<leader>pg', '<cmd>lua require("telescope.builtin").git_files()<cr>')
     nkeymap('<leader>pw', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
+    nkeymap('<leader>pW', '<cmd>lua require("telescope.builtin").live_grep({ hidden=true })<cr>')
     nkeymap('<leader>sb', '<cmd>lua require("telescope.builtin").buffers()<cr>')
     nkeymap('<leader>ph', '<cmd>lua require("telescope.builtin").help_tags()<cr>')
     nkeymap('<leader>hi', '<cmd>lua require("telescope.builtin").oldfiles()<cr>')

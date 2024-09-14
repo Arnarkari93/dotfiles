@@ -1,8 +1,8 @@
 return {
   { "folke/neoconf.nvim",                       cmd = "Neoconf" },
   "folke/neodev.nvim",
-  "nvim-lua/popup.nvim",       -- An implementation of the Popup API from vim in Neovim
-  "nvim-lua/plenary.nvim",     -- Useful lua functions used ny lots of plugins
+  "nvim-lua/popup.nvim",   -- An implementation of the Popup API from vim in Neovim
+  "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 
   -- Should be a part of vim
   "tpope/vim-surround",
@@ -18,7 +18,14 @@ return {
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
-  { "L3MON4D3/LuaSnip",                         version = "v1.*" },
+  {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp"
+  },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   { 'norcalli/nvim-colorizer.lua' },
+  { "catppuccin/nvim",                          name = "catppuccin", priority = 1000 }
 }
