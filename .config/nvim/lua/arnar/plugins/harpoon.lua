@@ -27,13 +27,16 @@ return {
     vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
       { desc = "Open harpoon window" })
 
-    vim.keymap.set("n", "<leader>ma", function() harpoon:list():append() end)
+    vim.keymap.set("n", "<leader>ma", function() harpoon:list():add() end)
     vim.keymap.set("n", "<leader>ml", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
-    -- vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
-    -- vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
-    -- vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
-    -- vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
+    -- alt + 1-6 to select the first 6 items in the list
+    vim.keymap.set("n", "≈", function() harpoon:list():select(1) end)
+    vim.keymap.set("n", "ç", function() harpoon:list():select(2) end)
+    vim.keymap.set("n", "√", function() harpoon:list():select(3) end)
+    vim.keymap.set("n", "ß", function() harpoon:list():select(4) end)
+    vim.keymap.set("n", "∂", function() harpoon:list():select(5) end)
+    vim.keymap.set("n", "ƒ", function() harpoon:list():select(6) end)
 
     -- Toggle previous & next buffers stored within Harpoon list
     vim.keymap.set("n", "<leader>mn", function() harpoon:list():prev() end)
