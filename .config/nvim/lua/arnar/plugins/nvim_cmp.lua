@@ -1,35 +1,47 @@
 return {
   'hrsh7th/nvim-cmp',
+  dependencies = {
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    'rafamadriz/friendly-snippets', -- Optional: common snippets
+    'petertriho/cmp-git',           -- Optional: for git commit completions
+    'kristijanhusak/vim-dadbod-completion', -- Optional: for SQL completion
+  },
   config = function()
     local cmp = require 'cmp'
-    local luasnip = require("luasnip")
+    local luasnip = require 'luasnip'
 
-    ---@diagnostic disable-next-line: redundant-parameter
+    require("luasnip.loaders.from_vscode").lazy_load()
+
     cmp.setup({
       snippet = {
-        -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-          -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-          require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-          -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-          -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+          luasnip.lsp_expand(args.body)
         end,
       },
       window = {
+        -- Uncomment to enable borders:
         -- completion = cmp.config.window.bordered(),
         -- documentation = cmp.config.window.bordered(),
       },
       mapping = cmp.mapping.preset.insert({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        ['<C-p>'] = cmp.mapping.complete(),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
-          elseif luasnip.locally_jumpable(1) then
+          elseif luasnip.jumpable(1) then
             luasnip.jump(1)
           else
-            local copilot_keys = vim.fn["copilot#Accept"]("")
+            local copilot_keys = vim.fn["copilot#Accept"] and vim.fn["copilot#Accept"]("") or ""
             if copilot_keys ~= "" then
               vim.api.nvim_feedkeys(copilot_keys, "i", true)
             else
@@ -40,22 +52,18 @@ return {
         ['<S-Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.locally_jumpable(-1) then
+          elseif luasnip.jumpable(-1) then
             luasnip.jump(-1)
           else
             fallback()
           end
         end, { "i", "s" }),
-        ['<C-e>'] = cmp.mapping.abort(),
-        -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         ['<CR>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            if luasnip.expandable() then
-              luasnip.expand()
+            if luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
             else
-              cmp.confirm({
-                select = true,
-              })
+              cmp.confirm({ select = true })
             end
           else
             fallback()
@@ -64,32 +72,31 @@ return {
       }),
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        -- { name = 'vsnip' }, -- For vsnip users.
-        { name = 'luasnip' }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
+        { name = 'copilot' },
+        { name = 'luasnip' },
       }, {
         { name = 'buffer' },
-      })
+      }),
     })
 
-    -- Set configuration for specific filetype.
+    -- Git commit filetype
     cmp.setup.filetype('gitcommit', {
       sources = cmp.config.sources({
-        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+        { name = 'cmp_git' },
       }, {
         { name = 'buffer' },
-      })
+      }),
     })
 
+    -- SQL filetype
     cmp.setup.filetype('sql', {
       sources = cmp.config.sources({
         { name = 'vim-dadbod-completion' },
         { name = 'buffer' },
-      })
+      }),
     })
 
-    -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+    -- `/` command line search
     cmp.setup.cmdline('/', {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
@@ -97,7 +104,7 @@ return {
       }
     })
 
-    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    -- `:` command line
     cmp.setup.cmdline(':', {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources({
