@@ -25,12 +25,12 @@ return {
     nkeymap(',gr', ':lua vim.lsp.buf.references()<cr>')
     nkeymap('K', ':lua vim.lsp.buf.hover()<cr>')
     nkeymap('<leader>sh', ':lua vim.lsp.buf.signature_help()<cr>')
+    vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { desc = "LSP signature help" })
+
     nkeymap('<leader>ca', ':lua vim.lsp.buf.code_action()<cr>')
     nkeymap('<leader>rn', ':lua vim.lsp.buf.rename()<cr>')
     nkeymap('<leader>en', ':lua vim.diagnostic.goto_next()<cr>')
     nkeymap('<leader>eN', ':lua vim.diagnostic.goto_prev()<cr>')
-    nkeymap('<leader>eN', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-    nkeymap('<leader>en', '<cmd>lua vim.diagnostic.goto_next()<CR>')
     nkeymap('<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>')
     nkeymap(',ff', '<cmd>lua vim.lsp.buf.format { async = true }<CR>')
 
@@ -75,7 +75,7 @@ return {
 
     lspconfig.ts_ls.setup {
       capabilities = capabilities,
-      on_attach = function(client)
+      on_attach = function(client, bufnr)
         -- Check if the project has a Deno config (meaning it's a Deno project)
         local root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd())
 
@@ -87,6 +87,15 @@ return {
 
         -- Disable formatting, as you might prefer other tools (e.g., prettier)
         client.server_capabilities.document_formatting = false
+
+        require("lsp_signature").on_attach({
+          bind = true,
+          floating_window = true,
+          hint_enable = true,
+          handler_opts = {
+            border = "rounded"
+          }
+        }, bufnr)
       end,
     }
 
