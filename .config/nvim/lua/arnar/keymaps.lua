@@ -41,12 +41,26 @@ keymap("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<cr>", opts)
 
 keymap("n", "<Tab>", ":bnext<CR>", opts)
 keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
+-- closes all buffers except the current one
+keymap("n", "<leader>bc", ":bp|bd #<cr>", opts)
+keymap("n", "<leader>bC", ":%bd|e#<cr>", opts)
 
 -- save
 keymap("n", "<leader>fs", ":w <cr>", opts)
+keymap("n", "<leader>fS", ":noa w <cr>", opts)
 
 keymap("n", "<leader>fer", ":luafile $MYVIMRC<cr>", opts)
 keymap("n", "<leader>fee", ":vsplit $MYVIMRC<cr>", opts)
+
+-- alt + hjkl to resize windows
+keymap("n", "˙", ":vertical resize +2<cr>", opts)
+keymap("n", "∆", ":resize +2<cr>", opts)
+keymap("n", "˚", ":resize -2<cr>", opts)
+keymap("n", "¬", ":vertical resize -2<cr>", opts)
+
+keymap("n", "ø", ":cnext<cr>", opts)
+keymap("n", "ˆ", ":cprev<cr>", opts)
+
 
 -- Behave vim Y
 keymap("n", "Y", "y$", opts)
