@@ -2,8 +2,9 @@ return {
   'nvim-telescope/telescope.nvim',
   dependencies = { { "nvim-telescope/telescope-live-grep-args.nvim" } },
   config = function()
-    local function nkeymap(key, map)
-      vim.api.nvim_set_keymap('n', key, map, {})
+    local function nkeymap(key, map, opts)
+      opts = opts or {}
+      vim.api.nvim_set_keymap('n', key, map, opts)
     end
 
     local action_layout = require("telescope.actions.layout")
@@ -53,10 +54,15 @@ return {
     nkeymap('<leader>pr', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>')
 
     nkeymap('<leader>pf', '<cmd>lua require("telescope.builtin").find_files()<cr>')
-    nkeymap('<leader>pF', '<cmd>lua require("telescope.builtin").find_files({ hidden=true })<cr>')
+    nkeymap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', { desc = "Find files" })
+    nkeymap('<leader>pF', '<cmd>lua require("telescope.builtin").find_files({ hidden=true, no_ignore=true, no_ignore_parent=true })<cr>')
+    nkeymap('<leader>fF', '<cmd>lua require("telescope.builtin").find_files({ hidden=true, no_ignore=true, no_ignore_parent=true })<cr>', {})
+    nkeymap('<leader>pd',
+      '<cmd>lua require("telescope.builtin").find_files({ find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" } })<cr>')
     nkeymap('<leader>pg', '<cmd>lua require("telescope.builtin").git_files()<cr>')
     nkeymap('<leader>pw', '<cmd>lua require("telescope.builtin").live_grep()<cr>')
     nkeymap('<leader>pW', '<cmd>lua require("telescope.builtin").live_grep({ hidden=true })<cr>')
+
     nkeymap('<leader>sb', '<cmd>lua require("telescope.builtin").buffers()<cr>')
     nkeymap('<leader>ph', '<cmd>lua require("telescope.builtin").help_tags()<cr>')
     nkeymap('<leader>hi', '<cmd>lua require("telescope.builtin").oldfiles()<cr>')
