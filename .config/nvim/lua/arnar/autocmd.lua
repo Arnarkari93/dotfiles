@@ -5,3 +5,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = augroup,
   command = "lua require'vim.highlight'.on_yank({timeout = 40})"
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "sql",
+    command = "setlocal commentstring=--\\ %s",
+})
