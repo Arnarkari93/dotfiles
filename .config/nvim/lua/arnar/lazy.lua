@@ -13,4 +13,4 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("arnar.plugins")
-vim.cmd [[colorscheme catppuccin]]
+-- vim.cmd [[colorscheme kanagawa]]
