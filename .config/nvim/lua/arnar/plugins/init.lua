@@ -1,5 +1,5 @@
 return {
-  { "folke/neoconf.nvim",                       cmd = "Neoconf" },
+  "folke/neoconf.nvim",
   "folke/neodev.nvim",
   "nvim-lua/popup.nvim",   -- An implementation of the Popup API from vim in Neovim
   "nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
@@ -18,14 +18,14 @@ return {
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
-  {
-    "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-    -- install jsregexp (optional!).
-    build = "make install_jsregexp"
-  },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   { 'norcalli/nvim-colorizer.lua' },
-  { "catppuccin/nvim",                          name = "catppuccin", priority = 1000 }
+  { "catppuccin/nvim",                          name = "catppuccin", priority = 1000 },
+  {
+    "Cliffback/netcoredbg-macOS-arm64.nvim",
+    dependencies = { "mfussenegger/nvim-dap" },
+    config = function()
+      require('netcoredbg-macOS-arm64').setup(require('dap'))
+    end
+  }
 }

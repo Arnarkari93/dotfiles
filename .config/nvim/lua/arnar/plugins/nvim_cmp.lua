@@ -2,7 +2,9 @@ return {
   'hrsh7th/nvim-cmp',
   config = function()
     local cmp = require 'cmp'
+    local luasnip = require("luasnip")
 
+    ---@diagnostic disable-next-line: redundant-parameter
     cmp.setup({
       snippet = {
         -- REQUIRED - you must specify a snippet engine
@@ -21,9 +23,11 @@ return {
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
         ['<C-p>'] = cmp.mapping.complete(),
-        ['<Tab>'] = function(fallback)
+        ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
+          elseif luasnip.locally_jumpable(1) then
+            luasnip.jump(1)
           else
             local copilot_keys = vim.fn["copilot#Accept"]("")
             if copilot_keys ~= "" then
@@ -32,15 +36,36 @@ return {
               fallback()
             end
           end
-        end,
-        ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+        end, { "i", "s" }),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.locally_jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<CR>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            if luasnip.expandable() then
+              luasnip.expand()
+            else
+              cmp.confirm({
+                select = true,
+              })
+            end
+          else
+            fallback()
+          end
+        end),
       }),
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'vsnip' }, -- For vsnip users.
-        -- { name = 'luasnip' }, -- For luasnip users.
+        -- { name = 'vsnip' }, -- For vsnip users.
+        { name = 'luasnip' }, -- For luasnip users.
         -- { name = 'ultisnips' }, -- For ultisnips users.
         -- { name = 'snippy' }, -- For snippy users.
       }, {
@@ -53,6 +78,13 @@ return {
       sources = cmp.config.sources({
         { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
       }, {
+        { name = 'buffer' },
+      })
+    })
+
+    cmp.setup.filetype('sql', {
+      sources = cmp.config.sources({
+        { name = 'vim-dadbod-completion' },
         { name = 'buffer' },
       })
     })
@@ -73,31 +105,6 @@ return {
       }, {
         { name = 'cmdline' }
       })
-    })
-
-    -- Setup lspconfig.
-    local capabilities = require('cmp_nvim_lsp').default_capabilities(
-      vim.lsp.protocol.make_client_capabilities()
-    )
-    -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-    require('lspconfig').lua_ls.setup {
-      capabilities = capabilities
-    }
-    require('lspconfig').tsserver.setup {
-      capabilities = capabilities
-    }
-    require("lspconfig").gopls.setup {
-      settings = {
-        gopls = {
-          staticcheck = true,
-        },
-      },
-    }
-    require("lspconfig").csharp_ls.setup({
-      capabilities = capabilities
-    })
-    require("lspconfig").eslint.setup({
-      capabilities = capabilities
     })
   end
 }
