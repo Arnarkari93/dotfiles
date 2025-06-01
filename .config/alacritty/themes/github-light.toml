@@ -1,0 +1,28 @@
+# (Github Light) Colors for Alacritty
+
+# Primary colors
+[colors.primary]
+background = "#ffffff"
+foreground = "#24292e"
+
+# Normal colors
+[colors.normal]
+black = "#24292e"
+red = "#d73a49"
+green = "#28a745"
+yellow = "#dbab09"
+blue = "#0366d6"
+magenta = "#6f42c1"
+cyan = "#1b7c83"
+white = "#d1d5da"
+
+# Bright colors
+[colors.bright]
+black = "#586069"
+red = "#d73a49"
+green = "#28a745"
+yellow = "#dbab09"
+blue = "#0366d6"
+magenta = "#6f42c1"
+cyan = "#1b7c83"
+white = "#ffffff"

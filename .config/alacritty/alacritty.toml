@@ -1,7 +1,7 @@
-import = [ "~/.config/alacritty/themes/catppuccin-mocha.toml" ]
+import = [ "~/.config/alacritty/themes/tokyo-night.toml" ]
 
 [window]
-decorations="Buttonless"
+decorations="none"
 
 [font]
 normal={ family="Hack Nerd Font Mono", style="Regular" }
