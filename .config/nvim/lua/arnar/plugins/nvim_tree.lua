@@ -6,6 +6,12 @@ return {
         sorter = "case_sensitive",
       },
       view = {
+        float = {
+          enable = true,
+          open_win_config = {
+            height = 50,
+          }
+        },
         width = {
           min = 30,
           max = -1,
@@ -24,5 +30,4 @@ return {
     vim.keymap.set('n', '<leader>fo', '<cmd>NvimTreeOpen<CR>')
     vim.keymap.set('n', '<leader>fc', '<cmd>NvimTreeClose<CR>')
   end,
-
 }
