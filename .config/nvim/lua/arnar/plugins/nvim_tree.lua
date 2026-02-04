@@ -16,12 +16,14 @@ return {
           min = 30,
           max = -1,
         },
+        side = 'right',
       },
       renderer = {
         group_empty = true,
       },
       filters = {
         dotfiles = false,
+        git_ignored = true,
       },
     })
 
@@ -31,3 +33,4 @@ return {
     vim.keymap.set('n', '<leader>fc', '<cmd>NvimTreeClose<CR>')
   end,
 }
+
