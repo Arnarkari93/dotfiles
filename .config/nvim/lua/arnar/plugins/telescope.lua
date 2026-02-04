@@ -53,8 +53,8 @@ return {
     require("telescope").load_extension("live_grep_args")
     nkeymap('<leader>pr', '<cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>')
 
-    nkeymap('<leader>pf', '<cmd>lua require("telescope.builtin").find_files()<cr>')
-    nkeymap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>', { desc = "Find files" })
+    nkeymap('<leader>pf', '<cmd>lua require("telescope.builtin").find_files({ hidden=true })<cr>')
+    nkeymap('<leader>ff', '<cmd>lua require("telescope.builtin").find_files({ hidden=true })<cr>', { desc = "Find files" })
     nkeymap('<leader>pF', '<cmd>lua require("telescope.builtin").find_files({ hidden=true, no_ignore=true, no_ignore_parent=true })<cr>')
     nkeymap('<leader>fF', '<cmd>lua require("telescope.builtin").find_files({ hidden=true, no_ignore=true, no_ignore_parent=true })<cr>', {})
     nkeymap('<leader>pd',
