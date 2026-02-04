@@ -1,6 +1,7 @@
 font-family = "Hack Nerd Font Mono"
 font-feature = "-calt"
-theme = dark:GitHub-Dark-Default,light:GitHub-Light-Default
+theme = dark:GitHub Dark Default,light:GitHub Light Default
 # theme = "ayu"
 window-decoration = false
-
+keybind = shift+enter=text:\x1b\r
+macos-option-as-alt = left
