@@ -33,6 +33,9 @@ do
   keymap("n", "<leader>" .. i, ":" .. i .. "wincmd w<CR>", opts)
 end
 
+nkeymap("j", "gj")
+nkeymap("k", "gk")
+
 nkeymap("<leader>w", "<C-w>")
 nkeymap("<leader>wsh", ":sp<cr>")
 nkeymap("<leader><Tab>", "<C-w><C-w>")
@@ -60,7 +63,8 @@ keymap("n", "¬", ":vertical resize -2<cr>", opts)
 
 keymap("n", "ø", ":cnext<cr>", opts)
 keymap("n", "ˆ", ":cprev<cr>", opts)
-
+keymap("n", "<leader>cn", ":cnext<cr>", opts)
+keymap("n", "<leader>cp", ":cprev<cr>", opts)
 
 -- Behave vim Y
 keymap("n", "Y", "y$", opts)
@@ -80,6 +84,7 @@ keymap("n", "C-u", "C-uzz", opts)
 -- search and replace
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+keymap("n", "<leader>ts", ":set spell!<CR>", opts)
 
 -- VISUAL --
 -- Stay in indent mode
